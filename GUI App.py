@@ -1,31 +1,9 @@
-'''import tkinter
-
-top = tkinter.tk()
-L1 = Label(top, text="Enter the number :")
-L1.pack(side = LEFT)
-E1 = Entry(top, bd =5)
-E1.pack(side = RIGHT)
-
-top.mainloop()'''
 import json
 import difflib
 from tkinter import *
 from difflib import SequenceMatcher
 data = json.load(open("data.json"))
 
-'''def translate(word):
-    return (translation.join(data[word]))
-
-def translate():
-    definition = ""
-    alternateString = ""
-    word = E1.get()
-    correctWord = word.lower()
-    #if correctWord in data:
-    E2.insert(0,definition.join(data[correctWord])
-    #else:
-        #E3.insert(0,alternateString.join([temp for temp in data.keys() if SequenceMatcher(None,temp,correctWod).ratio() > 0.8]))
-'''
 def add():
     if E1.get() in data:
         correctWord = ""
@@ -33,7 +11,6 @@ def add():
         E2.insert(0,correctWord.join(data[E1.get().lower()]))
     else:
         testString = ""
-        #L2.text = (testString.join([test for test in data.keys() if SequenceMatcher(None,test,E1.get()).ratio()> 0.8]))
         abc = "No such thing as {}. Did you mean {}?".format(E1.get(),testString.join([test for test in data.keys() if SequenceMatcher(None,test,E1.get()).ratio()> 0.8]))
         L2.configure(text = abc)
     
