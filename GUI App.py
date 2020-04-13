@@ -2,16 +2,18 @@ import json
 import difflib
 from tkinter import *
 from difflib import SequenceMatcher
+from difflib import get_close_matches
 data = json.load(open("data.json"))
 
 def add():
     if E1.get() in data:
         correctWord = ""
+        str2 = ""
         E2.delete(0,END)
         E2.insert(0,correctWord.join(data[E1.get().lower()]))
     else:
         testString = ""
-        abc = "No such thing as {}. Did you mean {}?".format(E1.get(),testString.join([test for test in data.keys() if SequenceMatcher(None,test,E1.get()).ratio()> 0.8]))
+        abc = "No such thing as {}. Did you mean {}?".format(E1.get(),get_close_matches(E1.get().lower(),data.keys())[0]) #[0]th element of get_close_matches is the most accurate one.
         L2.configure(text = abc)
     
 master = Tk()
